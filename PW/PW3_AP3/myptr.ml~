@@ -1,0 +1,50 @@
+#use "ap3_def.ml";;
+#use "mybool.ml";;
+
+(* TP3 AP3 03/11 *)
+
+(* Exercice 3 : Implantation avec des pointeurs *)
+
+module type BtreePtr = 
+  sig
+    type 'a t_btree
+    val empty : unit -> 'a t_btree
+    val rooting : 'a * 'a t_btree -> 'a t_btree
+    val root : 'a t_btree -> 'a
+    val lson : 'a t_btree -> 'a t_btree 
+    val rson : 'a t_btree -> 'a t_btree
+    val isEmpty : 'a t_btree -> bool
+  end
+;;
+
+
+module MyBtreePtr : BtreePtr =
+  struct
+    type 'a t_btree = ('a t_node) ptr and
+    'a t_node =
+      {
+        racine = 'a;
+        lson = 'a t_btree;
+        rson = 'a t_btree;
+      }
+      
+      
+  end
+;;
+
+
+(*
+module type Pointer =
+  sig
+    type 'a ptr
+    val null : unit -> 'a ptr
+    val alloc : 'a -> 'a ptr
+    val free : 'a ptr -> unit
+    val ( !^ ) : 'a ptr -> 'a
+    val ( ^:= ) : 'a ptr -> 'a -> unit
+    val ( &:= ) : 'a ptr -> 'a ref -> unit
+    val ( $:= ) : 'a ptr -> 'a ptr -> unit
+    val isNull : 'a ptr -> bool
+  end
+;;
+*)

@@ -1,0 +1,29 @@
+#use "ap3_def.ml";;
+#use "mybool.ml";;
+#use "mybtree.ml";;
+
+(* TP3 AP3 03/11 *)
+
+(* Exercice 0 : Signature des Booléens *)
+
+(* -- TEST À FAIRE -- *)
+  
+(* Exercice 1 : Signature des arbres binaires *)
+
+(* -- TEST À FAIRE -- *)
+  
+(* Exercice 2 : Implantation avec un type somme *)
+
+let n1 : int t_btree = rooting(7, empty(), empty());;
+let n2 : int t_btree = rooting(6, n1, empty());;
+let n3 : int t_btree = rooting(5, n2, empty());;
+let n4 : int t_btree = rooting(4, n3, empty());;
+let n5 : int t_btree = rooting(3, n4, empty());;
+let n6 : int t_btree = rooting(2, n5, empty());;
+let n7 : int t_btree = rooting(1, n6, empty());;
+  
+(* Exercice 3 : Implantation avec des pointeurs *)
+
+(* -- TEST À FAIRE -- *)
+
+(* Exercice 4 : Transposez en C *)
