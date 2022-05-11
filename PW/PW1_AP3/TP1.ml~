@@ -1,0 +1,172 @@
+#use "ap3_def.ml";;
+
+
+(* TP1 AP3 30/09 *)
+
+(* Exercice 1 : *)
+
+let norme(x, y, z : float * float * float) =
+  sqrt(x**2.+.y**2.+.z**2.)
+;;
+
+let a = 3.;;
+let b = 9.;;
+let c = 6.;;
+
+norme(a,b,c);;
+
+
+
+(* Exercice 2 : *)
+
+(* N°(1) *)
+let milieu(ax, ay, bx, by : float * float * float * float) : float * float =
+  (1./.2.*.(ax+.bx), 1./.2.*.(ay+.by))
+;;
+
+let ax = 2.;;
+let ay = 4.;;
+let bx = 3.;;
+let by = 1.;;
+milieu(ax,ay,bx,by);;
+
+
+(* N°(2) *)
+let mediatrice(ax, ay, bx, by : float * float * float * float) : float * float * float =
+  (2.*.(bx-.ax),2.*.(by-.ay),(ax+.bx)*.(ax-.bx)+.(ay+.by)*.(ay-.by))
+;;
+
+let ax = 2.;;
+let ay = 4.;;
+let bx = 3.;;
+let by = 1.;;
+mediatrice(ax,ay,bx,by);;
+
+
+(* Exercice 3 : *)
+
+(* N°(1) *)
+let signe(x : int): string =
+  if (x == 0)
+  then "nul"
+  else if x>0
+  then "positif"
+  else if x<0
+  then "negatif"
+  else failwith("Error try again")
+;;
+
+signe(1);;
+signe(-5);;
+signe(0);;
+
+
+(* N°(2) *)
+let max2(x, y : int * int): int =
+  if x>y
+  then x
+  else y
+;;
+
+let min2(x, y : int * int): int =
+  if x<y
+  then x
+  else y
+;;
+
+(* N°(3) *)
+let max3(x, y, z : int * int * int): int =
+  max2(x, max2(y, z))
+;;
+
+let min3(x, y, z : int * int * int): int =
+  min2(x, min2(y, z))
+;;
+
+
+let x = 1;;
+let y = 2;;
+let z = 3;;
+
+max2(x, y);;
+min2(x, y);;
+max3(x, y, z);;
+min3(x , y, z);;
+
+
+(* Exercice 4 : *)
+
+(* utilisation d'une définition locale *)
+let longueur(ax, ay, bx, by: float * float * float * float): float =
+  let ac : float = by-.ay in
+  let bc : float = bx-.ax in
+  let phytagore(a, b : float * float): float=
+    sqrt(a**2.+.b**2.) in
+  phytagore(ac, bc)
+;;
+
+longueur(5.,4.,5.,7.);;
+
+
+
+(* Exercice 5 : *)
+
+
+(* N°(1) *)
+let  rec qui_suis_je (n : int) : int =
+  if n = 0
+  then 0
+  else n + (qui_suis_je (n-1))
+;;
+
+(* Que fait la fonction suivante et quel est son type ? *)
+(* C'est une fonction factorielle et elle est de type int *)
+
+
+(* N°(2) *)
+
+let rec somme_carre(n: float ): float =
+  if n <= 0.
+  then 0.
+  else n**2.+.(somme_carre(n-.1.))
+;;
+
+
+somme_carre(5.);;
+
+(* Exercice 6 : *)
+
+(* N°(1) *)
+
+let rec heron(x, n : float * int) : float =
+  if n = 0
+  then 1.
+  else
+    let h = heron(x , n-1) in
+    1./.2.*.(h +. x/. h)
+;;
+
+(* N°(2) *)
+
+let rec limite_aux(prec, actu, n, x, epsi : float * float * int * float * float ) : float =
+  if abs_float(actu -. prec) < epsi
+  then actu
+  else limite_aux(actu, 1./.2.*.(actu +. x/. actu), n+1, x, epsi)
+;;
+
+let limite(x, epsi : float * float ) : float =
+limite_aux(heron(x, 0), heron(x , 1), 1, x, epsi)
+;;
+
+#trace limite_aux;;
+
+limite(10., 10.**(-8.));;
+
+(* N°(3) *)
+
+
+(* Exercice 7 : *)
+
+(* Exercice 8 : *)
+
+(* Exercice 9 : *)
