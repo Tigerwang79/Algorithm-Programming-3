@@ -1,0 +1,3 @@
+#use "ap3_def.ml";;
+#load "bst.cmo";;
+open Bst;;
