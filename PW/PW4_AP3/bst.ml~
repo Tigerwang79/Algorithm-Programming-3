@@ -1,0 +1,11 @@
+let rec bst_seek(tree, v : 'a t_btree * 'a): bool =
+  if(isEmpty(tree))
+  then false
+  else
+    if(root(tree) = v)
+    then true
+    else
+      if(root(tree) > v)
+      then bst_seek(lson(tree),v)
+      else bst_seek(rson(tree),v)
+;;
